@@ -1,0 +1,774 @@
+/* ========================================
+   CSS Variables (디자인 토큰)
+   ======================================== */
+:root {
+    /* Colors - Neutral */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    /* Colors - Green */
+    --color-green-800: #24554A;
+    --color-green-600: #3E7467;
+    --color-green-500: #458D7E;
+    --color-green-300: #90D4C6;
+
+    /* Colors - Grey */
+    --color-grey-950: #24303E;
+    --color-grey-600: #5B636D;
+    --color-grey-550: #808397;
+    --color-grey-400: #A7AAAD;
+
+    /* Colors - Blue */
+    --color-blue-950: #052C3B;
+    --color-blue-800: #19536C;
+
+    /* Colors - Accent */
+    --color-red-400: #FE7766;
+    --color-yellow-500: #FAD400;
+
+    /* Colors - Background */
+    --color-bg-hero: #3DBEFF;
+    --color-bg-footer: #90D4C6;
+
+    /* Typography */
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Barlow', sans-serif;
+
+    /* Spacing */
+    --spacing-0: 0;
+    --spacing-100: 0.5rem;
+    /* 8px */
+    --spacing-200: 1rem;
+    /* 16px */
+    --spacing-300: 1.5rem;
+    /* 24px */
+    --spacing-400: 2rem;
+    /* 32px */
+    --spacing-500: 2.5rem;
+    /* 40px */
+    --spacing-600: 3rem;
+    /* 48px */
+    --spacing-700: 3.5rem;
+    /* 56px */
+    --spacing-900: 4.5rem;
+    /* 72px */
+    --spacing-1000: 5rem;
+    /* 80px */
+
+    /* Breakpoints */
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+}
+
+/* ========================================
+   CSS Reset (브라우저 기본 스타일 제거)
+   ======================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* padding과 border를 width에 포함 */
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================
+   Base Styles (기본 스타일)
+   ======================================== */
+html {
+    /* 1rem = 16px (브라우저 기본값) */
+    font-size: 100%;
+    /* 부드러운 스크롤 효과 */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    /* 18px - style guide 기본 폰트 크기 */
+    line-height: 1.65;
+    color: var(--color-grey-600);
+    background-color: var(--color-white);
+    /* 텍스트 가독성 향상 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 이미지 기본 설정 */
+img {
+    max-width: 100%;
+    /* 부모 요소를 넘지 않음 */
+    height: auto;
+    /* 비율 유지 */
+    display: block;
+    /* 이미지 아래 공백 제거 */
+}
+
+/* 링크 기본 설정 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 리스트 기본 스타일 제거 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 버튼 기본 스타일 제거 */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ========================================
+   Header (헤더)
+   ======================================== */
+.header {
+    position: absolute;
+    /* 히어로 이미지 위에 배치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-400) var(--spacing-300) 0;
+    z-index: 100;
+    /* 다른 요소 위에 표시 */
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header__logo img {
+    width: 124px;
+    height: auto;
+}
+
+.header__menu-toggle {
+    display: block;
+    padding: var(--spacing-100) 0 var(--spacing-100) var(--spacing-100);
+    /* 오른쪽 패딩 삭제 */
+}
+
+/* 네비게이션 (기본: 숨김, JavaScript로 토글) */
+.navigation {
+    position: absolute;
+    top: calc(100% + 50px);
+    /* 헤더와 50px 간격 설정 */
+    right: var(--spacing-300);
+    left: var(--spacing-300);
+    background-color: var(--color-white);
+    padding: var(--spacing-500) 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* 삼각형 말풍선 꼬리 */
+.navigation::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    /* 꼬리 크기에 맞춰 위치 조정 */
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 25px 25px;
+    /* 꼬리 크기를 25px로 조정 */
+    border-color: transparent transparent var(--color-white) transparent;
+}
+
+/* 네비게이션 열림 상태 */
+.navigation.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navigation__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-400);
+}
+
+/* 마지막 항목(버튼)을 제외한 메뉴 항목의 높이만 25px로 설정 */
+.navigation__item:not(:last-child) {
+    height: 25px;
+}
+
+.navigation__link {
+    font-size: 1.25rem;
+    /* 20px (Preset 9) */
+    line-height: 1.25;
+    /* 125% (Preset 9) */
+    letter-spacing: 0;
+    /* (Preset 9) */
+    font-weight: 600;
+    color: var(--color-grey-550);
+    /* Grey 550 적용 */
+    transition: color 0.3s ease;
+}
+
+
+/* Contact 버튼 스타일 */
+.navigation__link--cta {
+    display: inline-block;
+    padding: 15.5px 37.5px;
+    background-color: var(--color-yellow-500);
+    color: var(--color-grey-950);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    /* 15px (Preset 8) */
+    line-height: 1.65;
+    /* 165% (Preset 8) */
+    letter-spacing: 1px;
+    /* (Preset 8) */
+    font-weight: 900;
+    /* Fraunces Black (Preset 8) */
+    text-transform: uppercase;
+    border-radius: 28px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+/* ========================================
+   Hero Section (히어로 섹션)
+   ======================================== */
+.hero {
+    position: relative;
+    min-height: 538px;
+    background-color: var(--color-bg-hero);
+    background-image: url('./images/mobile/image-header.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 136px;
+}
+
+.hero__title {
+    font-family: var(--font-heading);
+    font-size: 2.625rem;
+    /* 42px (Preset 2) */
+    line-height: 1.25;
+    /* 125% (Preset 2) */
+    font-weight: 900;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    /* (Preset 2) */
+    text-align: center;
+    margin-bottom: var(--spacing-600);
+}
+
+.hero__arrow {
+    width: auto;
+    height: 107.48px;
+}
+
+/* ========================================
+   Features Section (주요 기능 섹션)
+   ======================================== */
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.feature__image {
+    width: 100%;
+}
+
+.feature__content {
+    padding: 67.5px var(--spacing-300);
+    text-align: center;
+}
+
+.feature__title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    /* 32px (Preset 4) */
+    line-height: 1.25;
+    /* 125% (Preset 4) */
+    letter-spacing: 0;
+    /* (Preset 4) */
+    font-weight: 900;
+    color: var(--color-grey-950);
+    margin-bottom: var(--spacing-300);
+    /* 24px */
+}
+
+.feature__description {
+    font-size: 1.125rem;
+    /* 18px (Preset 10) */
+    line-height: 1.65;
+    /* 165% (Preset 10) */
+    letter-spacing: 0;
+    /* (Preset 10) */
+    color: var(--color-grey-550);
+    /* Grey 550 적용 */
+    margin-bottom: var(--spacing-300);
+    /* 24px (spacing-300) 적용 */
+}
+
+.feature__link {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    /* 15px (Preset 8) */
+    line-height: 1.65;
+    /* 165% (Preset 8) */
+    letter-spacing: 1px;
+    /* (Preset 8) */
+    font-weight: 900;
+    color: var(--color-grey-950);
+    text-transform: uppercase;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+/* 링크 밑줄 효과 */
+.feature__link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 137px;
+    height: 10px;
+    border-radius: 10px;
+    opacity: 0.25;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.feature__link--yellow::after {
+    background-color: var(--color-yellow-500);
+}
+
+.feature__link--red::after {
+    background-color: var(--color-red-400);
+}
+
+
+/* ========================================
+   Services Section (서비스 섹션)
+   ======================================== */
+.services {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.service {
+    position: relative;
+    min-height: 600px;
+}
+
+.service__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.service__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 18px 56px;
+    text-align: center;
+}
+
+.service__title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    /* 28px (Preset 5) */
+    line-height: 1.25;
+    /* 125% (Preset 5) */
+    letter-spacing: 0;
+    /* (Preset 5) */
+    font-weight: 900;
+    margin-bottom: var(--spacing-400);
+}
+
+.service__description {
+    font-size: 1rem;
+    /* 16px (Preset 11) */
+    line-height: 1.7;
+    /* 170% (Preset 11) */
+    letter-spacing: 0;
+    /* (Preset 11) */
+    color: var(--color-green-600);
+    /* 기본 색상: Green 600 */
+}
+
+/* Graphic Design 색상 */
+.service--graphic-design .service__title {
+    color: var(--color-green-800);
+}
+
+.service--graphic-design .service__description {
+    color: var(--color-green-600);
+}
+
+/* Photography 색상 */
+.service--photography .service__title {
+    color: var(--color-blue-950);
+}
+
+.service--photography .service__description {
+    color: var(--color-blue-800);
+}
+
+/* ========================================
+   Testimonials Section (후기 섹션)
+   ======================================== */
+.testimonials {
+    padding: 55px 22.5px;
+    text-align: center;
+}
+
+.testimonials__title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    /* 20px (Preset 6) */
+    line-height: 1.25;
+    /* 125% (Preset 6) */
+    letter-spacing: 4px;
+    /* (Preset 6) */
+    font-weight: 900;
+    color: var(--color-grey-400);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-700);
+    /* 56px */
+    width: 100%;
+}
+
+.testimonials__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-700);
+    /* 56px */
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testimonial__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-bottom: 58px;
+}
+
+.testimonial__quote {
+    font-size: 1.125rem;
+    /* 18px (Preset 10) */
+    line-height: 1.65;
+    /* 165% (Preset 10) */
+    letter-spacing: 0;
+    /* (Preset 10) */
+    color: var(--color-grey-600);
+    margin-bottom: var(--spacing-400);
+    /* 32px (spacing-400) */
+    max-width: 350px;
+}
+
+.testimonial__author {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    /* 18px (Preset 7) */
+    line-height: 1.25;
+    /* 125% (Preset 7) */
+    letter-spacing: 0;
+    /* (Preset 7) */
+    font-weight: 900;
+    color: var(--color-grey-950);
+    margin-bottom: var(--spacing-100);
+}
+
+.testimonial__position {
+    font-size: 0.875rem;
+    /* 14px (Preset 12) */
+    line-height: 1.8;
+    /* 180% (Preset 12) */
+    letter-spacing: 0;
+    /* (Preset 12) */
+    color: var(--color-grey-400);
+}
+
+/* ========================================
+   Gallery Section (갤러리 섹션)
+   ======================================== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery__item {
+    width: 100%;
+}
+
+.gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========================================
+   Footer (푸터)
+   ======================================== */
+.footer {
+    background-color: var(--color-bg-footer);
+    padding: 73.5px 38.5px;
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.footer__logo {
+    margin-bottom: var(--spacing-500);
+    /* 40px */
+}
+
+.footer__logo img {
+    width: 170px;
+    height: auto;
+    /* 로고 색상을 초록색으로 변경 */
+    filter: brightness(0) saturate(100%) invert(33%) sepia(16%) saturate(1034%) hue-rotate(116deg) brightness(95%) contrast(89%);
+}
+
+.footer__nav-list {
+    display: flex;
+    gap: var(--spacing-700);
+}
+
+.footer__nav-link {
+    font-size: 1.125rem;
+    /* 18px (Preset 10) */
+    line-height: 1.65;
+    /* 165% (Preset 10) */
+    letter-spacing: 0;
+    /* (Preset 10) */
+    color: var(--color-green-500);
+    /* Green 600 -> 500으로 변경 */
+    transition: color 0.3s ease;
+}
+
+
+.footer__social {
+    display: flex;
+    gap: var(--spacing-400);
+    margin-top: var(--spacing-1000);
+    /* 80px */
+}
+
+.footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.footer__social-link img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+/* ========================================
+   Tablet Styles (태블릿: 768px 이상)
+   ======================================== */
+@media (min-width: 768px) {
+
+    /* Header */
+    .header {
+        padding: var(--spacing-500) var(--spacing-600);
+    }
+
+    .header__menu-toggle {
+        display: none;
+        /* 태블릿에서는 햄버거 메뉴 숨김 */
+    }
+
+    /* 네비게이션: 항상 표시 */
+    .navigation {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .navigation::before {
+        display: none;
+        /* 말풍선 꼬리 제거 */
+    }
+
+    .navigation__list {
+        flex-direction: row;
+        gap: var(--spacing-600);
+    }
+
+    .navigation__link {
+        font-size: 1.125rem;
+        /* 18px */
+        color: var(--color-white);
+    }
+
+    .navigation__link--cta {
+        background-color: var(--color-white);
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 800px;
+        background-image: url('./images/desktop/image-header.jpg');
+        padding-top: 200px;
+    }
+
+    .hero__title {
+        font-size: 3.5rem;
+        /* 56px */
+        letter-spacing: 9px;
+    }
+
+    /* Features */
+    .feature {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 짝수 feature는 이미지가 오른쪽 */
+    .feature:nth-child(even) .feature__image {
+        order: 2;
+    }
+
+    .feature__content {
+        padding: var(--spacing-1000) var(--spacing-900);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .feature__title {
+        font-size: 2.5rem;
+        /* 40px */
+    }
+
+    .feature__link::after {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    /* Services */
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: var(--spacing-1000) var(--spacing-600);
+    }
+
+    .testimonials__list {
+        flex-direction: row;
+        gap: var(--spacing-600);
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Hover Effects for Tablet/Desktop */
+    .navigation__link:hover {
+        color: var(--color-grey-950);
+    }
+
+    .navigation__link--cta:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: var(--color-white);
+    }
+
+    .feature__link:hover::after {
+        opacity: 1;
+    }
+
+    .footer__nav-link:hover {
+        color: var(--color-white);
+    }
+
+    .footer__social-link:hover {
+        filter: brightness(0) saturate(100%) invert(100%);
+    }
+}
+
+/* ========================================
+   Desktop Styles (데스크탑: 1024px 이상)
+   ======================================== */
+@media (min-width: 1024px) {
+
+    /* Hero */
+    .hero__title {
+        font-size: 3.5rem;
+        /* 56px */
+    }
+
+    /* Features */
+    .feature__content {
+        padding: 0 var(--spacing-1000);
+    }
+
+    .feature__title {
+        font-size: 2.5rem;
+        /* 40px */
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: var(--spacing-1000);
+    }
+
+    .testimonials__list {
+        gap: var(--spacing-900);
+    }
+}

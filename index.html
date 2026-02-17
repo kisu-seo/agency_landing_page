@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <!-- 문자 인코딩: 한글 포함 모든 문자 지원 -->
+  <meta charset="UTF-8">
+  <!-- 반응형 디자인: 모바일 기기에서 올바르게 표시 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: 페이지 제목 -->
+  <title>Sunnyside Agency Landing Page</title>
+  <!-- SEO: 페이지 설명 -->
+  <meta name="description" content="Sunnyside는 브랜드 성장을 돕는 풀 서비스 크리에이티브 에이전시입니다.">
+
+  <!-- Google Fonts: Fraunces와 Barlow 폰트 로드 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- JavaScript 파일: defer 속성으로 HTML 로드 후 실행 -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- 헤더: 로고와 네비게이션 -->
+  <header class="header">
+    <div class="header__container">
+      <!-- 로고 -->
+      <a href="#" class="header__logo" aria-label="Sunnyside 홈으로 이동">
+        <img src="./images/logo.svg" alt="Sunnyside 로고">
+      </a>
+
+      <!-- 모바일 메뉴 토글 버튼 -->
+      <button class="header__menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navigation">
+        <img src="images/icon-hamburger.svg" alt="메뉴">
+      </button>
+
+      <!-- 네비게이션 메뉴 -->
+      <nav class="navigation" id="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#about" class="navigation__link">About</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#services" class="navigation__link">Services</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#projects" class="navigation__link">Projects</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#contact" class="navigation__link navigation__link--cta">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="main">
+    <!-- 히어로 섹션: 메인 비주얼 -->
+    <section class="hero">
+      <h1 class="hero__title">We are creatives</h1>
+      <img src="./images/icon-arrow-down.svg" alt="" class="hero__arrow" aria-hidden="true">
+    </section>
+
+    <!-- Features 섹션: 주요 서비스 소개 -->
+    <section class="features">
+      <!-- Feature 1: Transform your brand -->
+      <article class="feature">
+        <!-- 모바일/데스크탑 이미지 반응형 처리 -->
+        <picture class="feature__image">
+          <source media="(min-width: 768px)" srcset="./images/desktop/image-transform.jpg">
+          <img src="./images/mobile/image-transform.jpg" alt="계란 이미지">
+        </picture>
+
+        <div class="feature__content">
+          <h2 class="feature__title">Transform your brand</h2>
+          <p class="feature__description">
+            We are a full-service creative agency specializing in helping brands grow fast.
+            Engage your clients through compelling visuals that do most of the marketing for you.
+          </p>
+          <a href="#" class="feature__link feature__link--yellow">Learn more</a>
+        </div>
+      </article>
+
+      <!-- Feature 2: Stand out to the right audience -->
+      <article class="feature feature--reverse">
+        <picture class="feature__image">
+          <source media="(min-width: 768px)" srcset="./images/desktop/image-stand-out.jpg">
+          <img src="./images/mobile/image-stand-out.jpg" alt="핑크 컵 이미지">
+        </picture>
+
+        <div class="feature__content">
+          <h2 class="feature__title">Stand out to the right audience</h2>
+          <p class="feature__description">
+            Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters,
+            we'll build and extend your brand in digital places.
+          </p>
+          <a href="#" class="feature__link feature__link--red">Learn more</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Services 섹션: Graphic Design & Photography -->
+    <section class="services" id="services">
+      <!-- Graphic Design -->
+      <article class="service service--graphic-design">
+        <picture class="service__image">
+          <source media="(min-width: 768px)" srcset="./images/desktop/image-graphic-design.jpg">
+          <img src="./images/mobile/image-graphic-design.jpg" alt="체리 이미지">
+        </picture>
+
+        <div class="service__content">
+          <h2 class="service__title">Graphic design</h2>
+          <p class="service__description">
+            Great design makes you memorable. We deliver artwork that underscores your brand message
+            and captures potential clients' attention.
+          </p>
+        </div>
+      </article>
+
+      <!-- Photography -->
+      <article class="service service--photography">
+        <picture class="service__image">
+          <source media="(min-width: 768px)" srcset="./images/desktop/image-photography.jpg">
+          <img src="./images/mobile/image-photography.jpg" alt="오렌지 이미지">
+        </picture>
+
+        <div class="service__content">
+          <h2 class="service__title">Photography</h2>
+          <p class="service__description">
+            Increase your credibility by getting the most stunning, high-quality photos
+            that improve your business image.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Testimonials 섹션: 고객 후기 -->
+    <section class="testimonials">
+      <h2 class="testimonials__title">Client testimonials</h2>
+
+      <div class="testimonials__list">
+        <!-- Testimonial 1 -->
+        <article class="testimonial">
+          <img src="./images/image-emily.jpg" alt="Emily R. 프로필 사진" class="testimonial__avatar">
+          <blockquote class="testimonial__quote">
+            We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always
+            hit.
+          </blockquote>
+          <p class="testimonial__author">Emily R.</p>
+          <p class="testimonial__position">Marketing Director</p>
+        </article>
+
+        <!-- Testimonial 2 -->
+        <article class="testimonial">
+          <img src="./images/image-thomas.jpg" alt="Thomas S. 프로필 사진" class="testimonial__avatar">
+          <blockquote class="testimonial__quote">
+            Sunnyside's enthusiasm coupled with their keen interest in our brand's success made it a satisfying and
+            enjoyable experience.
+          </blockquote>
+          <p class="testimonial__author">Thomas S.</p>
+          <p class="testimonial__position">Chief Operating Officer</p>
+        </article>
+
+        <!-- Testimonial 3 -->
+        <article class="testimonial">
+          <img src="./images/image-jennie.jpg" alt="Jennie F. 프로필 사진" class="testimonial__avatar">
+          <blockquote class="testimonial__quote">
+            Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!
+          </blockquote>
+          <p class="testimonial__author">Jennie F.</p>
+          <p class="testimonial__position">Business Owner</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gallery 섹션: 이미지 갤러리 -->
+    <section class="gallery" id="projects">
+      <picture class="gallery__item">
+        <source media="(min-width: 768px)" srcset="./images/desktop/image-gallery-milkbottles.jpg">
+        <img src="./images/mobile/image-gallery-milkbottles.jpg" alt="우유병 이미지">
+      </picture>
+
+      <picture class="gallery__item">
+        <source media="(min-width: 768px)" srcset="./images/desktop/image-gallery-orange.jpg">
+        <img src="./images/mobile/image-gallery-orange.jpg" alt="오렌지 이미지">
+      </picture>
+
+      <picture class="gallery__item">
+        <source media="(min-width: 768px)" srcset="./images/desktop/image-gallery-cone.jpg">
+        <img src="./images/mobile/image-gallery-cone.jpg" alt="아이스크림 콘 이미지">
+      </picture>
+
+      <picture class="gallery__item">
+        <source media="(min-width: 768px)" srcset="./images/desktop/image-gallery-sugar-cubes.jpg">
+        <img src="./images/mobile/image-gallery-sugar-cubes.jpg" alt="설탕 큐브 이미지">
+      </picture>
+    </section>
+  </main>
+
+  <!-- Footer: 로고, 네비게이션, 소셜 아이콘 -->
+  <footer class="footer">
+    <div class="footer__container">
+      <!-- Footer 로고 -->
+      <a href="#" class="footer__logo" aria-label="Sunnyside 홈으로 이동">
+        <img src="./images/logo.svg" alt="Sunnyside 로고">
+      </a>
+
+      <!-- Footer 네비게이션 -->
+      <nav class="footer__nav">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item">
+            <a href="#about" class="footer__nav-link">About</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#services" class="footer__nav-link">Services</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#projects" class="footer__nav-link">Projects</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 소셜 미디어 아이콘 -->
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" aria-label="Facebook 페이지로 이동">
+          <img src="./images/icon-facebook.svg" alt="">
+        </a>
+        <a href="#" class="footer__social-link" aria-label="Instagram 페이지로 이동">
+          <img src="./images/icon-instagram.svg" alt="">
+        </a>
+        <a href="#" class="footer__social-link" aria-label="Twitter 페이지로 이동">
+          <img src="./images/icon-twitter.svg" alt="">
+        </a>
+        <a href="#" class="footer__social-link" aria-label="Pinterest 페이지로 이동">
+          <img src="./images/icon-pinterest.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
