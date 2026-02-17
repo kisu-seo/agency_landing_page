@@ -618,47 +618,17 @@ button {
    ======================================== */
 @media (min-width: 768px) {
 
-    /* Header */
+    /* Header - 패딩만 조정 */
     .header {
         padding: var(--spacing-500) var(--spacing-600);
     }
 
-    .header__menu-toggle {
-        display: none;
-        /* 태블릿에서는 햄버거 메뉴 숨김 */
-    }
+    /* 
+    레이아웃은 모바일과 동일하게 유지
+    태블릿에서도 햄버거 메뉴 사용
+    */
 
-    /* 네비게이션: 항상 표시 */
-    .navigation {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        background-color: transparent;
-        padding: 0;
-    }
-
-    .navigation::before {
-        display: none;
-        /* 말풍선 꼬리 제거 */
-    }
-
-    .navigation__list {
-        flex-direction: row;
-        gap: var(--spacing-600);
-    }
-
-    .navigation__link {
-        font-size: 1.125rem;
-        /* 18px */
-        color: var(--color-white);
-    }
-
-    .navigation__link--cta {
-        background-color: var(--color-white);
-    }
-
-    /* Hero */
+    /* Hero - 타이포그래피 조정 */
     .hero {
         min-height: 800px;
         background-image: url('./images/desktop/image-header.jpg');
@@ -671,53 +641,30 @@ button {
         letter-spacing: 9px;
     }
 
-    /* Features */
-    .feature {
+    /* Features - 모바일 레이아웃 유지 (1열) */
+    /* .feature {
         grid-template-columns: repeat(2, 1fr);
-    }
+    } */
 
-    /* 짝수 feature는 이미지가 오른쪽 */
-    .feature:nth-child(even) .feature__image {
-        order: 2;
-    }
-
-    .feature__content {
-        padding: var(--spacing-1000) var(--spacing-900);
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .feature__title {
-        font-size: 2.5rem;
-        /* 40px */
-    }
-
-    .feature__link::after {
-        left: 0;
-        transform: translateX(0);
-    }
-
-    /* Services */
-    .services {
+    /* Services - 모바일 레이아웃 유지 (1열) */
+    /* .services {
         grid-template-columns: repeat(2, 1fr);
-    }
+    } */
 
-    /* Testimonials */
+    /* Testimonials - 모바일 레이아웃 유지 (세로 배치) */
     .testimonials {
         padding: var(--spacing-1000) var(--spacing-600);
     }
 
-    .testimonials__list {
+    /* .testimonials__list {
         flex-direction: row;
         gap: var(--spacing-600);
-    }
+    } */
 
-    /* Gallery */
-    .gallery {
+    /* Gallery - 모바일 레이아웃 유지 (2열) */
+    /* .gallery {
         grid-template-columns: repeat(4, 1fr);
-    }
+    } */
 
     /* Hover Effects for Tablet/Desktop */
     .navigation__link:hover {
