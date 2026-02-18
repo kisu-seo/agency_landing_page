@@ -26,7 +26,7 @@
 
 ### Built with
 
-- **Semantic HTML5 Markup** - '<header>', '<main>', '<section>', '<article>', '<footer>' for meaningful document structure
+- **Semantic HTML5 Markup** - `<header>`, `<main>`, `<section>`, `<article>`, `<footer>` for meaningful document structure
 
 - **CSS Custom Properties (Variables)** - Centralized design tokens in :root for colors, fonts, and spacing
 
@@ -36,7 +36,7 @@
 
 - **Flexbox Layout** - utilized for the navigation bar, content centering, and testimonial alignment
 
-- **Responsive Images** - '<picture>' element with '<source>' tags for "Art Direction" (switching between mobile/desktop image crops)
+- **Responsive Images** - `<picture>` element with `<source>` tags for "Art Direction" (switching between mobile/desktop image crops)
 
 - **Mobile-First Workflow** - Styles developed for mobile first, then adapted for Tablet (768px) and Desktop (1024px)
 
