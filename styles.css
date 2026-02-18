@@ -501,7 +501,7 @@ button {
     /* (Preset 10) */
     color: var(--color-grey-600);
     margin-bottom: var(--spacing-400);
-    /* 32px (spacing-400) */
+    /* 기본(모바일) 하단 마진은 32px(spacing-400)로 유지합니다. */
     max-width: 350px;
 }
 
@@ -711,6 +711,10 @@ button {
     .feature__title {
         font-size: 2.5rem;
         /* 40px (Text Preset 3) 적용 */
+        line-height: 1.25;
+        /* 125% (Text Preset 3) 적용 */
+        letter-spacing: 0;
+        /* (Text Preset 3) 적용 */
         margin-bottom: var(--spacing-400);
         /* 32px 아래쪽 마진(spacing-400) 적용 */
     }
@@ -813,25 +817,205 @@ button {
    ======================================== */
 @media (min-width: 1024px) {
 
-    /* Hero */
-    .hero__title {
-        font-size: 3.5rem;
-        /* 56px */
+    /* Header - 데스크탑 레이아웃 */
+    .header {
+        padding-top: var(--spacing-400);
+        /* 데스크탑에서 위쪽 패딩을 32px(spacing-400)로 조정합니다. */
     }
 
-    /* Features */
+    .header__menu-toggle {
+        display: none;
+        /* 데스크탑에서는 햄버거 메뉴 버튼을 숨깁니다. */
+    }
+
+    /* Navigation - 데스크탑에서는 항상 표시되는 가로 메뉴 */
+    .navigation {
+        position: static;
+        /* absolute 해제: 일반 흐름으로 복귀 */
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        /* 애니메이션 효과 제거 */
+        padding: 0;
+        background-color: transparent;
+        /* 배경 제거 */
+        width: auto;
+        margin: 0;
+    }
+
+    .navigation::before {
+        display: none;
+        /* 말풍선 꼬리 제거 */
+    }
+
+    .navigation__list {
+        flex-direction: row;
+        /* 가로 배치 */
+        align-items: center;
+        gap: var(--spacing-600);
+        /* 48px 간격 */
+    }
+
+    .navigation__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* 모든 메뉴 항목을 140x56px 크기로 고정하고 내부 정렬을 수행합니다. */
+    }
+
+    .navigation__item:not(:last-child) .navigation__link {
+        font-size: 1.125rem;
+        /* 18px (Text Preset 10) */
+        line-height: 1.65;
+        /* 165% (Text Preset 10) */
+        color: var(--color-white);
+        /* 데스크탑에서는 흰색 텍스트 */
+    }
+
+    .navigation__link--cta {
+        padding: 15.5px 27.5px;
+        background-color: var(--color-white);
+        /* 흰색 배경 */
+        color: var(--color-grey-950);
+        /* 진한 회색 텍스트 */
+    }
+
+    .navigation__link--cta:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        /* 호버 시 반투명 흰색 */
+        color: var(--color-white);
+        /* 호버 시 흰색 텍스트 */
+    }
+
+
+    /* Hero */
+    .hero {
+        padding-top: 184px;
+        /* 데스크탑 화면에 맞춰 히어로 섹션의 위쪽 패딩을 184px로 조정합니다. */
+    }
+
+    .hero__title {
+        width: 750px;
+        /* 데스크탑 화면에 맞춰 제목의 너비를 750px로 확장합니다. */
+        font-size: 3.5rem;
+        /* 56px (Text Preset 1) */
+        line-height: 1.25;
+        /* 125% (Text Preset 1) */
+        letter-spacing: 9px;
+        /* (Text Preset 1) */
+        margin-bottom: 6rem;
+        /* 96px 아래쪽 마진 적용: 제목과 아래 화살표 사이의 공간을 충분히 확보합니다. */
+    }
+
+    /* Features - 2열 그리드 레이아웃 및 체스판식 배치(교차 배치) */
+    .feature {
+        grid-template-columns: repeat(2, 1fr);
+        /* 이미지와 콘텐츠를 가로로 나란히 배치합니다. */
+    }
+
+    .feature__image {
+        order: 2;
+        /* 기본적으로 이미지를 오른쪽(2번)에 배치합니다. */
+    }
+
     .feature__content {
-        padding: 0 var(--spacing-1000);
+        order: 1;
+        /* 기본적으로 콘텐츠를 왼쪽(1번)에 배치합니다. */
+        padding: 0 137.5px;
+        /* 좌우 패딩을 137.5px로 설정하여 텍스트의 폭을 최적화합니다. */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* 콘텐츠를 세로 중앙 정렬합니다. */
+        align-items: flex-start;
+        /* 자식 요소들을 수평 방향의 시작점(왼쪽)으로 정렬합니다. */
+    }
+
+    /* feature--reverse 클래스가 있는 경우 위치를 반대로 뒤집습니다. */
+    .feature--reverse .feature__image {
+        order: 1;
+        /* 이미지를 왼쪽(1번)으로 옮깁니다. */
+    }
+
+    .feature--reverse .feature__content {
+        order: 2;
+        /* 콘텐츠를 오른쪽(2번)으로 옮깁니다. */
+        padding: 0 130px;
+        /* 좌우 패딩을 디자인 요구사항인 130px로 수정하여 텍스트 상자의 너비를 조절합니다. */
+    }
+
+    .feature--reverse .feature__description {
+        margin-bottom: var(--spacing-500);
+        /* 반전된 섹션에서는 설명글 하단 마진을 40px(spacing-500)로 설정하여 여백의 리듬감을 줍니다. */
+    }
+
+    .feature__description {
+        text-align: left;
+        /* 데스크탑 화면에서 서비스 설명을 왼쪽으로 정렬하여 가독성을 높입니다. */
+        margin-bottom: var(--spacing-200);
+        /* 아래쪽 여백(Margin)을 디자인 가이드에 맞춰 16px(spacing-200)로 조정합니다. */
+    }
+
+    .feature__link::after {
+        left: 0;
+        /* 하이라이트 밑줄을 왼쪽 끝에서 시작하도록 설정합니다. */
+        transform: none;
+        /* 중앙 정렬을 위한 이동 속성을 해제합니다. */
+    }
+
+    .feature__link {
+        padding-left: 9.5px;
+        /* 데스크탑 화면에서 링크의 왼쪽 여백을 9.5px로 설정합니다. */
+    }
+
+    /* Services - 2열 그리드 레이아웃 */
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+        /* 서비스를 가로로 2개씩 나란히 배치합니다. */
+    }
+
+    .service__content {
+        padding-left: 188.5px;
+        padding-right: 188.5px;
+        /* 2열 레이아웃에 맞춰 텍스트가 너무 좁아지지 않도록 좌우 패딩을 조절합니다. */
     }
 
     /* .feature__title의 폰트 크기는 태블릿(768px) 스타일에서 2.5rem으로 설정되어 데스크탑에서도 계층적으로 상속됩니다. */
 
     /* Testimonials */
     .testimonials {
-        padding: var(--spacing-1000);
+        padding: 162px 163px;
+        /* 섹션의 집중도를 높이기 위해 상하 162px, 좌우 163px의 넉넉한 패딩을 적용합니다. */
     }
 
     .testimonials__list {
-        gap: var(--spacing-900);
+        display: grid;
+        /* 후기를 가로로 나란히 배치하기 위해 그리드를 사용합니다. */
+        grid-template-columns: repeat(3, 1fr);
+        /* 3명의 후기를 위해 동일한 너비의 3개 열을 만듭니다. */
+        gap: var(--spacing-400);
+        /* 각 후기 항목 사이의 여백을 디자인 가이드에 맞춰 32px(spacing-400)로 조절합니다. */
+    }
+
+    .testimonial__quote {
+        margin-bottom: var(--spacing-900);
+        /* 데스크탑 화면에서는 인용문 아래 여백을 72px(spacing-900)로 넓게 설정합니다. */
+    }
+
+    /* 갤러리 (Projects) - 4열 그리드 레이아웃 */
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+        /* 데스크탑 화면에서 이미지를 가로로 4개씩 나란히 배치합니다. */
+    }
+
+    .gallery__item img {
+        height: 447px;
+        /* 데스크탑 해상도에 맞춰 이미지의 높이를 447px로 고정하여 일관된 그리드를 유지합니다. */
+    }
+
+    .footer {
+        padding-left: 571px;
+        padding-right: 571px;
+        /* 데스크탑 화면폭에 맞춰 푸터 내부 콘텐츠가 너무 넓게 퍼지지 않도록 좌우 여백을 571px로 넓게 설정합니다. */
     }
 }
